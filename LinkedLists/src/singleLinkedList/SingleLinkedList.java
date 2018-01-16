@@ -75,16 +75,21 @@ public class SingleLinkedList {
 		int i, n, data;
 		Scanner scan = new Scanner(System.in);
 
-		System.out.println("Enter the number of nodes: ");
-		n = scan.nextInt();
+		try {
 
-		if (n == 0)
-			return;
+			System.out.println("Enter the number of nodes: ");
+			n = scan.nextInt();
 
-		for (i = 1; i <= n; i++) {
-			System.out.println("Enter the element to be inserted: ");
-			data = scan.nextInt();
-			insertAtEnd(data);
+			if (n == 0)
+				return;
+
+			for (i = 1; i <= n; i++) {
+				System.out.println("Enter the element to be inserted: ");
+				data = scan.nextInt();
+				insertAtEnd(data);
+			}
+		} finally {
+			scan.close();
 		}
 	}
 
