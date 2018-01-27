@@ -59,6 +59,47 @@ public class Demo {
 						data = scan.nextInt();
 						list.insertAtEnd(data);
 						break;
+					case 6:
+						System.out.println("Enter the element to be inserted: ");
+						data = scan.nextInt();
+						System.out.println("Enter the element after which to insert: ");
+						x = scan.nextInt();
+						list.insertAfter(data, x);
+						break;
+					case 7:
+						System.out.println("Enter the element to be inserted: ");
+						data = scan.nextInt();
+						System.out.println("Enter the element before which to insert: ");
+						x = scan.nextInt();
+						list.insertBefore(data, x);
+						break;
+					case 8:
+						System.out.println("Enter the element to be inserted: ");
+						data = scan.nextInt();
+						System.out.println("Enter the position at which to insert: ");
+						x = scan.nextInt();
+						list.insertAtPosition(data, x);
+						break;
+					case 9:
+						list.deleteFirstNode();
+						break;
+					case 10:
+						list.deleteLastNode();
+						break;
+					case 11:
+						System.out.println("Enter the element to be deleted: ");
+						data = scan.nextInt();
+						list.deleteNode(data);
+						break;
+					case 12:
+						list.reverseList();
+						break;
+					case 13:
+						list.bubbleSortData();
+						break;
+					case 14:
+						list.bubbleSortLinks();
+						break;
 				}
 			}
 		} finally {

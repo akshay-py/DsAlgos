@@ -273,6 +273,121 @@ public class SingleLinkedList {
 		} else {
 			p.link = p.link.link;
 		}
+	}
 
+	public void reverseList() {
+		Node prev, p, next;
+
+		prev = null;
+		p = start;
+		while (p != null) {
+			next = p.link;
+			p.link = prev;
+			prev = p;
+			p = next;
+		}
+		start = prev;
+	}
+
+	public void bubbleSortData() {
+		Node p, q, end;
+
+		// set end to end of list. 
+		// loop till end comes to second node -> start.link
+		// every iteration, set end to p
+		for (end = null; end != start.link; end = p) {
+			// begin list from p = start
+			// loop till end
+			// move p to next node -> p.link
+			for (p = start; p.link != end; p = p.link) {
+				// set q to next node of p
+				q = p.link;
+				// compare info
+				if (p.info > q.info) {
+					// swap info
+					int temp = p.info;
+					p.info = q.info;
+					q.info = temp;
+				}
+			}
+		}
+	}
+
+	public void bubbleSortLinks() {
+		Node end, r, p, q, temp;
+		// set end to end of list. 
+		// loop till end comes to second node -> start.link
+		// every iteration, set end to p
+		for (end = null; end != start.link; end = p) {
+			// begin list from p = start
+			// loop till end
+			// move p to next node -> p.link, set r to q
+			for (r = p = start; p.link != end; r = q, p = p.link) {
+				// set q to next node of p
+				q = p.link;
+				// compare info
+				if (p.info > q.info) {
+					p.link = q.link;
+					q.link = p;
+					if (p != start) {
+						r.link = q;
+					} else {
+						start = q;
+					}
+					temp = p;
+					p = q;
+					q = temp;
+				}
+			}
+		}
+	}
+
+	public SingleLinkedList merge1(SingleLinkedList list) {
+		SingleLinkedList mergeList = new SingleLinkedList();
+		mergeList.start = merge1(start, list.start);
+		return mergeList;
+	}
+
+	private Node merge1(Node p1, Node p2) {
+		Node startM;
+
+		// for first item compare info of p1 and p2
+		if (p1.info <= p2.info) {
+			// create mergedList with first node from info of p1
+			startM = new Node(p1.info);
+			p1 = p1.link;
+		} else {
+			// create mergedList with first node from info of p2
+			startM = new Node(p2.info);
+			p2 = p2.link;
+		}
+
+		Node pM = startM;
+
+		while (p1 != null && p2 != null) {
+			if (p1.info <= p2.info) {
+				pM.link = new Node(p1.info);
+				p1 = p1.link;
+			} else {
+				pM.link = new Node(p2.info);
+				p2 = p2.link;
+			}
+			pM = pM.link;
+		}
+
+		// if second list has finished and elements left in first list
+		while (p1 != null) {
+			pM.link = new Node(p1.info);
+			p1 = p1.link;
+			pM = pM.link;
+		}
+
+		// if first list has finished and elements left in second list
+		while (p2 != null) {
+			pM.link = new Node(p2.info);
+			p2 = p2.link;
+			pM = pM.link;
+		}
+		return startM;
 	}
 }
