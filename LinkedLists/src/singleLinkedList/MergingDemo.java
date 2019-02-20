@@ -29,7 +29,7 @@ public class MergingDemo {
 		System.out.println("Second List -> ");
 		list2.displayLinkedList();
 
-		list3 = list1.merge2(list2);
+		//list3 = list1.merge2(list2);
 		System.out.println("Merged List -> ");
 		list3.displayLinkedList();
 
